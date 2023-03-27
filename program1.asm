@@ -52,7 +52,39 @@
 #       B. subtract two values (use instruction "sub")
 #       C. multiply two values (use instruction "mul")
 #       D. divide two values (use instruction "div")
-#       E. Output the arithmetic results in the "Run I/O" section in MARS environment back to the user
+#       E. Output the arithmetic results in the "Run I/O" section in MARS environment back to the user 
+
+.text 
+.globl main 
+	main:
+    		# user input
+    		li $v0, 5      
+    		syscall        
+    		move $s0, $v0  
+    		syscall        
+    		move $s1, $v0  
+
+    		# arithmetic operations
+    		add $t0, $s0, $s1  
+    		sub $t1, $s0, $s1 
+    		mul $t2, $s0, $s1  
+    		div $t3, $s0, $s1  
+
+  		# output 
+    		li $v0, 1      
+    		move $a0, $t0  
+    		syscall       
+   		 move $a0, $t1 
+    		syscall       
+    		move $a0, $t2  
+    		syscall       
+    		move $a0, $t3  
+    		syscall        
+
+    		# exit 
+    		li $v0, 10     
+    		syscall
+
 
 
 #   Task 3: Conditions
