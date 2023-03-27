@@ -10,12 +10,40 @@
 #       C. The two user values should be held in registers $s0 and $s1, respectively
 #       D. Output the user inputs in the "Run I/O" section in MARS environment back to the user
 
-data:
+.data
     #create variables here?
+    prompt: .asciiz "Please enter an integer: "
 
-text:
+.text
     main:
-        #get user input, store in $s0 and $s1
+    	li $v0, 4         #output string in a0
+    	la $a0, prompt 	  #load string from data into a0
+    	syscall           #Execute
+
+    	li $v0, 5         #read user input form console
+    	syscall           #execute
+
+    	move $s0, $v0	  # move user input from v0 to s0 new register
+
+    	li $v0, 1	  #print out what whatevers in a0 same as before but with a integer this time
+    	move $a0, $s0    #move the value in s0 (which is user input) into a0
+    	syscall		  #execute
+    	
+    	li $v0, 4         #output string in a0
+    	la $a0, prompt 	  #load string from data into a0
+    	syscall           #Execute
+
+    	li $v0, 5         #read user input form console
+    	syscall           #execute
+
+    	move $s1, $v0	  # move user input from v0 to s0 new register
+
+    	li $v0, 1	  #print out what whatevers in a0 same as before but with a integer this time
+    	move $a0, $s1    #move the value in s1 (which is user input) into a0
+    	syscall		  #execute
+    
+    	li $v0, 10	#exit program
+	    syscall 	#execute
 
 
 #   Task 2: Arithmetic Operation Practice
