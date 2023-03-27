@@ -1,4 +1,4 @@
-#Name: Remi Ong
+#Group: AHHHH
 #Date: 3/27/2023
 #Program: Program 1 
 #Github link: https://github.com/djRemskii/mips_practice_AHHHH/blob/87fb18a3cf3acaf579e595acca3fd5c504ada1e0/program1.asm
@@ -108,12 +108,11 @@
 #   Task 3: Conditions
 #   In this final task, you will practice how to do conditions in Assembly:
 #       A. If the two user inputs from Task 1 are equal to each other, output "User inputs are the same"
-#       B. If the two user inputs from Task 1 are not equal to each other, output "User inputs are different
+#       B. If the two user inputs from Task 1 are not equal to each other, output "User inputs are different"
 
 
     	# exit 
     	li $v0, 10     
     	syscall
 
-    		
-"
+    	
