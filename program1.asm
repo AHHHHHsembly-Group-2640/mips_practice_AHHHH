@@ -110,9 +110,35 @@
 #       A. If the two user inputs from Task 1 are equal to each other, output "User inputs are the same"
 #       B. If the two user inputs from Task 1 are not equal to each other, output "User inputs are different"
 
+	li $v0, 5         
+	syscall           
 
-    	# exit 
-    	li $v0, 10     
-    	syscall
+	move $s0, $v0	# move user input from v0 to s0 new register
+
+	li $v0, 4       #output string in a0
+	la $a0, prompt 	#load string from data into a0
+	syscall           
+
+	li $v0, 5         
+	syscall           
+
+	move $s1, $v0	# move user input from v0 to s1 new register
+
+    # Compare s0 and s1
+    beq $s0, $s1, same  # Branch to 'same' label if s0 = s1
+    li $v0, 4           # output string in a0
+    la $a0, diff        # load string from data into a0
+    syscall              
+    j end                
+    
+same:
+    li $v0, 4           # output string in a0
+    la $a0, same        # load string from data into a0
+    syscall              
+
+end:
+    # exit 
+    li $v0, 10     
+    syscall
 
     	
